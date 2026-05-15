@@ -1,0 +1,485 @@
+{
+  "assessments": [
+    {
+      "id": "java_8_new",
+      "name": "Java 8 (New)",
+      "url": "https://www.shl.com/solutions/products/java/",
+      "description": "Assesses Java 8 programming knowledge including lambdas, streams, and functional programming.",
+      "test_type": "K",
+      "target_roles": [
+        "Backend Developer",
+        "Java Developer",
+        "Full-Stack Developer"
+      ],
+      "domains": [
+        "Technical",
+        "Programming",
+        "Java"
+      ],
+      "duration_minutes": 45,
+      "question_count": 40
+    },
+    {
+      "id": "python_new",
+      "name": "Python (New)",
+      "url": "https://www.shl.com/solutions/products/python/",
+      "description": "Tests Python programming proficiency including data structures, OOP, and libraries.",
+      "test_type": "K",
+      "target_roles": [
+        "Backend Developer",
+        "Python Developer",
+        "Data Scientist"
+      ],
+      "domains": [
+        "Technical",
+        "Programming",
+        "Python"
+      ],
+      "duration_minutes": 45,
+      "question_count": 40
+    },
+    {
+      "id": "javascript_new",
+      "name": "JavaScript (New)",
+      "url": "https://www.shl.com/solutions/products/javascript/",
+      "description": "Evaluates JavaScript knowledge including ES6, async/await, and DOM manipulation.",
+      "test_type": "K",
+      "target_roles": [
+        "Frontend Developer",
+        "Full-Stack Developer",
+        "Web Developer"
+      ],
+      "domains": [
+        "Technical",
+        "Programming",
+        "JavaScript"
+      ],
+      "duration_minutes": 45,
+      "question_count": 40
+    },
+    {
+      "id": "sql_new",
+      "name": "SQL (New)",
+      "url": "https://www.shl.com/solutions/products/sql/",
+      "description": "Assesses SQL proficiency in data querying, optimization, and database design.",
+      "test_type": "K",
+      "target_roles": [
+        "Database Developer",
+        "Data Analyst",
+        "Backend Developer"
+      ],
+      "domains": [
+        "Technical",
+        "Database",
+        "SQL"
+      ],
+      "duration_minutes": 45,
+      "question_count": 40
+    },
+    {
+      "id": "react_new",
+      "name": "React (New)",
+      "url": "https://www.shl.com/solutions/products/react/",
+      "description": "Tests React library proficiency including hooks, state management, and component architecture.",
+      "test_type": "K",
+      "target_roles": [
+        "Frontend Developer",
+        "Full-Stack Developer",
+        "React Developer"
+      ],
+      "domains": [
+        "Technical",
+        "Programming",
+        "Frontend"
+      ],
+      "duration_minutes": 45,
+      "question_count": 40
+    },
+    {
+      "id": "csharp_new",
+      "name": "C# (New)",
+      "url": "https://www.shl.com/solutions/products/csharp/",
+      "description": "Evaluates C# programming skills for .NET development.",
+      "test_type": "K",
+      "target_roles": [
+        "Backend Developer",
+        "C# Developer",
+        ".NET Developer"
+      ],
+      "domains": [
+        "Technical",
+        "Programming",
+        "C#"
+      ],
+      "duration_minutes": 45,
+      "question_count": 40
+    },
+    {
+      "id": "gsa",
+      "name": "GSA",
+      "url": "https://www.shl.com/solutions/products/gsa/",
+      "description": "General Ability Assessment measuring reasoning, verbal, and numerical abilities.",
+      "test_type": "C",
+      "target_roles": [
+        "Graduate",
+        "Junior Professional",
+        "Manager",
+        "Executive"
+      ],
+      "domains": [
+        "Cognitive",
+        "Reasoning",
+        "Numerical",
+        "Verbal"
+      ],
+      "duration_minutes": 30,
+      "question_count": 40
+    },
+    {
+      "id": "mq_numerical",
+      "name": "MQ Numerical",
+      "url": "https://www.shl.com/solutions/products/mq-numerical/",
+      "description": "Measures numerical reasoning and data interpretation abilities.",
+      "test_type": "C",
+      "target_roles": [
+        "Analyst",
+        "Finance Professional",
+        "Engineer"
+      ],
+      "domains": [
+        "Cognitive",
+        "Numerical",
+        "Quantitative"
+      ],
+      "duration_minutes": 25,
+      "question_count": 35
+    },
+    {
+      "id": "mq_verbal",
+      "name": "MQ Verbal",
+      "url": "https://www.shl.com/solutions/products/mq-verbal/",
+      "description": "Tests verbal reasoning, comprehension, and critical thinking.",
+      "test_type": "C",
+      "target_roles": [
+        "Professional",
+        "Consultant",
+        "Analyst"
+      ],
+      "domains": [
+        "Cognitive",
+        "Verbal",
+        "Reasoning"
+      ],
+      "duration_minutes": 25,
+      "question_count": 30
+    },
+    {
+      "id": "mq_logical",
+      "name": "MQ Logical",
+      "url": "https://www.shl.com/solutions/products/mq-logical/",
+      "description": "Assesses logical reasoning and pattern recognition capabilities.",
+      "test_type": "C",
+      "target_roles": [
+        "Engineer",
+        "Analyst",
+        "Programmer"
+      ],
+      "domains": [
+        "Cognitive",
+        "Logical",
+        "Reasoning"
+      ],
+      "duration_minutes": 25,
+      "question_count": 30
+    },
+    {
+      "id": "opq32r",
+      "name": "OPQ32r",
+      "url": "https://www.shl.com/solutions/products/opq32r/",
+      "description": "Personality questionnaire measuring 32 work-related personality traits.",
+      "test_type": "P",
+      "target_roles": [
+        "Manager",
+        "Leader",
+        "Executive",
+        "Professional"
+      ],
+      "domains": [
+        "Behavioral",
+        "Personality",
+        "Leadership"
+      ],
+      "duration_minutes": 45,
+      "question_count": 104
+    },
+    {
+      "id": "mq_32",
+      "name": "MQ32",
+      "url": "https://www.shl.com/solutions/products/mq32/",
+      "description": "Multi-dimensional personality assessment for role fit and team dynamics.",
+      "test_type": "P",
+      "target_roles": [
+        "Professional",
+        "Manager",
+        "Team Member"
+      ],
+      "domains": [
+        "Behavioral",
+        "Personality"
+      ],
+      "duration_minutes": 35,
+      "question_count": 96
+    },
+    {
+      "id": "opq_pro",
+      "name": "OPQ Pro",
+      "url": "https://www.shl.com/solutions/products/opq-pro/",
+      "description": "Professional personality assessment with enhanced reliability and validity.",
+      "test_type": "P",
+      "target_roles": [
+        "Executive",
+        "Senior Manager",
+        "Leadership"
+      ],
+      "domains": [
+        "Behavioral",
+        "Personality",
+        "Leadership"
+      ],
+      "duration_minutes": 50,
+      "question_count": 132
+    },
+    {
+      "id": "sjt_customer_service",
+      "name": "SJT Customer Service",
+      "url": "https://www.shl.com/solutions/products/sjt-customer-service/",
+      "description": "Situational judgment test for customer service and support roles.",
+      "test_type": "C",
+      "target_roles": [
+        "Customer Service Representative",
+        "Support Staff",
+        "Client Manager"
+      ],
+      "domains": [
+        "Behavioral",
+        "Situational Judgment"
+      ],
+      "duration_minutes": 25,
+      "question_count": 24
+    },
+    {
+      "id": "sjt_management",
+      "name": "SJT Management",
+      "url": "https://www.shl.com/solutions/products/sjt-management/",
+      "description": "Situational judgment test assessing management and leadership decision-making.",
+      "test_type": "C",
+      "target_roles": [
+        "Manager",
+        "Team Lead",
+        "Supervisor"
+      ],
+      "domains": [
+        "Behavioral",
+        "Situational Judgment",
+        "Leadership"
+      ],
+      "duration_minutes": 30,
+      "question_count": 24
+    },
+    {
+      "id": "strengths_finder",
+      "name": "Strengths Finder",
+      "url": "https://www.shl.com/solutions/products/strengths-finder/",
+      "description": "Identifies individual strengths and talents for role fit and development.",
+      "test_type": "P",
+      "target_roles": [
+        "Professional",
+        "Manager",
+        "Individual Contributor"
+      ],
+      "domains": [
+        "Behavioral",
+        "Development",
+        "Strengths"
+      ],
+      "duration_minutes": 35,
+      "question_count": 120
+    },
+    {
+      "id": "aws_solutions_architect",
+      "name": "AWS Solutions Architect",
+      "url": "https://www.shl.com/solutions/products/aws-architect/",
+      "description": "Tests AWS cloud architecture and solution design capabilities.",
+      "test_type": "K",
+      "target_roles": [
+        "Solutions Architect",
+        "Cloud Engineer",
+        "DevOps Engineer"
+      ],
+      "domains": [
+        "Technical",
+        "Cloud",
+        "AWS"
+      ],
+      "duration_minutes": 60,
+      "question_count": 50
+    },
+    {
+      "id": "docker_kubernetes",
+      "name": "Docker & Kubernetes",
+      "url": "https://www.shl.com/solutions/products/docker-kubernetes/",
+      "description": "Assesses containerization and orchestration knowledge.",
+      "test_type": "K",
+      "target_roles": [
+        "DevOps Engineer",
+        "Backend Developer",
+        "Cloud Engineer"
+      ],
+      "domains": [
+        "Technical",
+        "DevOps",
+        "Cloud"
+      ],
+      "duration_minutes": 50,
+      "question_count": 45
+    },
+    {
+      "id": "data_analytics",
+      "name": "Data Analytics",
+      "url": "https://www.shl.com/solutions/products/data-analytics/",
+      "description": "Tests data analysis, visualization, and insights generation skills.",
+      "test_type": "K",
+      "target_roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "Insights Specialist"
+      ],
+      "domains": [
+        "Technical",
+        "Data",
+        "Analytics"
+      ],
+      "duration_minutes": 50,
+      "question_count": 40
+    },
+    {
+      "id": "corrective_reading",
+      "name": "Corrective Reading",
+      "url": "https://www.shl.com/solutions/products/corrective-reading/",
+      "description": "Assesses written communication clarity and correction abilities.",
+      "test_type": "C",
+      "target_roles": [
+        "Writer",
+        "Editor",
+        "Communications Specialist"
+      ],
+      "domains": [
+        "Communication",
+        "Cognitive",
+        "Writing"
+      ],
+      "duration_minutes": 30,
+      "question_count": 35
+    },
+    {
+      "id": "error_checking",
+      "name": "Error Checking",
+      "url": "https://www.shl.com/solutions/products/error-checking/",
+      "description": "Tests attention to detail and accuracy in data review.",
+      "test_type": "C",
+      "target_roles": [
+        "Data Entry Specialist",
+        "Quality Assurance",
+        "Administrator"
+      ],
+      "domains": [
+        "Cognitive",
+        "Accuracy",
+        "Attention"
+      ],
+      "duration_minutes": 20,
+      "question_count": 100
+    },
+    {
+      "id": "mechanical_reasoning",
+      "name": "Mechanical Reasoning",
+      "url": "https://www.shl.com/solutions/products/mechanical-reasoning/",
+      "description": "Assesses mechanical and spatial reasoning abilities.",
+      "test_type": "C",
+      "target_roles": [
+        "Engineer",
+        "Technician",
+        "Maintenance Specialist"
+      ],
+      "domains": [
+        "Technical",
+        "Spatial",
+        "Mechanical"
+      ],
+      "duration_minutes": 30,
+      "question_count": 30
+    },
+    {
+      "id": "emotional_intelligence",
+      "name": "Emotional Intelligence",
+      "url": "https://www.shl.com/solutions/products/emotional-intelligence/",
+      "description": "Evaluates emotional awareness and interpersonal effectiveness.",
+      "test_type": "P",
+      "target_roles": [
+        "Manager",
+        "Leader",
+        "HR Professional"
+      ],
+      "domains": [
+        "Behavioral",
+        "Emotional Intelligence",
+        "Leadership"
+      ],
+      "duration_minutes": 35,
+      "question_count": 60
+    },
+    {
+      "id": "cultural_awareness",
+      "name": "Cultural Awareness",
+      "url": "https://www.shl.com/solutions/products/cultural-awareness/",
+      "description": "Tests understanding of cultural differences and global competencies.",
+      "test_type": "P",
+      "target_roles": [
+        "International Manager",
+        "Global Professional",
+        "Expatriate"
+      ],
+      "domains": [
+        "Behavioral",
+        "Cultural",
+        "Leadership"
+      ],
+      "duration_minutes": 30,
+      "question_count": 40
+    },
+    {
+      "id": "360_feedback",
+      "name": "360 Feedback",
+      "url": "https://www.shl.com/solutions/products/360-feedback/",
+      "description": "Multi-rater feedback assessment for comprehensive development insights.",
+      "test_type": "P",
+      "target_roles": [
+        "Manager",
+        "Leader",
+        "Executive"
+      ],
+      "domains": [
+        "Behavioral",
+        "Development",
+        "Leadership"
+      ],
+      "duration_minutes": 40,
+      "question_count": 45
+    }
+  ],
+  "metadata": {
+    "total": 25,
+    "source": "https://www.shl.com/solutions/products/",
+    "version": "1.0"
+  }
+}
