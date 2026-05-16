@@ -193,15 +193,15 @@ def chat(request: ChatRequest):
 def _has_sufficient_context(user_message: str) -> bool:
     """Check if user message provides sufficient context on turn 1.
 
-    Requires: role/domain + seniority level to proceed without clarification.
+    Sufficient if: role + seniority, OR role + 2+ tech/domain specifics.
     """
     message_lower = user_message.lower()
 
-    # Seniority indicators (REQUIRED)
+    # Seniority indicators
     seniority_keywords = ["junior", "mid", "middle", "senior", "executive", "entry", "entry-level"]
     has_seniority = any(kw in message_lower for kw in seniority_keywords)
 
-    # Role/domain indicators (REQUIRED)
+    # Role/domain indicators
     role_keywords = [
         "developer", "manager", "engineer", "analyst", "architect",
         "java", "python", "javascript", "sql", "c#", "csharp",
@@ -210,8 +210,17 @@ def _has_sufficient_context(user_message: str) -> bool:
     ]
     has_role = any(kw in message_lower for kw in role_keywords)
 
-    # Must have BOTH seniority and role to skip clarification
-    return has_seniority and has_role
+    # Tech/domain specificity keywords
+    specificity_keywords = [
+        "java", "python", "javascript", "sql", "c#", "aws", "docker",
+        "react", "typescript", "golang", "rust", "kotlin",
+        "machine learning", "ml", "data", "cloud", "backend", "frontend",
+        "cognitive", "personality", "behavioral", "leadership", "technical",
+    ]
+    specific_count = sum(1 for kw in specificity_keywords if kw in message_lower)
+
+    # Sufficient: role + seniority, OR role + 2 or more domain specifics
+    return has_role and (has_seniority or specific_count >= 2)
 
 
 def _extract_context(messages: list) -> dict:

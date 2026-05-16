@@ -115,24 +115,63 @@ class HybridRetriever:
                 normalized_score = 0.0
             bm25_scores[self.assessment_ids[idx]] = normalized_score
 
-        # Combine scores with name-matching bonus
+        # Combine scores with name-matching bonuses and tech-exclusivity penalties
         combined_scores = {}
         query_lower = query.lower()
+        query_tokens = set(tokens)
+
+        # Tech keywords that should match assessment names
+        tech_keywords = {"java", "python", "javascript", "c#", "csharp", "react", "aws",
+                        "docker", "sql", "typescript", "golang", "rust", "kotlin"}
+
+        # Tech keywords explicitly requested in this query
+        query_techs = {t for t in query_tokens if t in tech_keywords}
+
         for assessment_id in self.assessment_ids:
             faiss_score = faiss_scores.get(assessment_id, 0.0)
             bm25_score = bm25_scores.get(assessment_id, 0.0)
             combined = (faiss_weight * faiss_score) + (bm25_weight * bm25_score)
 
-            # Boost score if assessment name contains key query terms
             assessment = self.catalog.get_by_id(assessment_id)
             if assessment:
                 name_lower = assessment.name.lower()
-                # Strong boost for language/tech name matches (e.g., "Java", "Python", "C#")
-                tech_keywords = ["java", "python", "javascript", "c#", "csharp", "react", "aws", "docker", "sql"]
-                for token in tokens:
-                    if token in tech_keywords and token in name_lower:
-                        combined += 0.5  # Large boost for tech keyword matches
+                # Word-level tokenization (prevents "java" substring-matching "javascript")
+                name_words = set(name_lower.replace('(', ' ').replace(')', ' ').replace('-', ' ').split())
+                name_first_word = name_lower.split()[0] if name_lower.split() else ""
+
+                # Strategy 1: Tech keyword exact WORD match in name (strong boost: +1.2)
+                # Word-level check prevents "java" from matching "javascript (new)"
+                for token in query_tokens:
+                    if token in tech_keywords and token in name_words:
+                        combined += 1.2
                         break
+
+                # Strategy 2: First word of name exactly matches query token (medium boost: +0.6)
+                # Exact first-word check prevents "java".startswith matching "javascript"
+                for token in query_tokens:
+                    if len(token) > 2 and name_first_word == token:
+                        combined += 0.6
+                        break
+
+                # Strategy 3: Query term is major word in name (small boost: +0.3)
+                for token in query_tokens:
+                    if len(token) > 2 and token in name_words:
+                        combined += 0.3
+                        break
+
+                # Strategy 4: Tech keyword present in assessment domains (domain boost: +0.4)
+                domain_words = set(' '.join(assessment.domains).lower().split())
+                for token in query_tokens:
+                    if token in tech_keywords and token in domain_words:
+                        combined += 0.4
+                        break
+
+                # Strategy 5: Competing-tech penalty
+                # If query requests tech X, penalize assessments whose name contains a different tech Y
+                if query_techs:
+                    competing = {w for w in name_words if w in tech_keywords and w not in query_techs}
+                    if competing:
+                        combined -= 0.6
 
             combined_scores[assessment_id] = combined
 
