@@ -115,12 +115,25 @@ class HybridRetriever:
                 normalized_score = 0.0
             bm25_scores[self.assessment_ids[idx]] = normalized_score
 
-        # Combine scores
+        # Combine scores with name-matching bonus
         combined_scores = {}
+        query_lower = query.lower()
         for assessment_id in self.assessment_ids:
             faiss_score = faiss_scores.get(assessment_id, 0.0)
             bm25_score = bm25_scores.get(assessment_id, 0.0)
             combined = (faiss_weight * faiss_score) + (bm25_weight * bm25_score)
+
+            # Boost score if assessment name contains key query terms
+            assessment = self.catalog.get_by_id(assessment_id)
+            if assessment:
+                name_lower = assessment.name.lower()
+                # Strong boost for language/tech name matches (e.g., "Java", "Python", "C#")
+                tech_keywords = ["java", "python", "javascript", "c#", "csharp", "react", "aws", "docker", "sql"]
+                for token in tokens:
+                    if token in tech_keywords and token in name_lower:
+                        combined += 0.5  # Large boost for tech keyword matches
+                        break
+
             combined_scores[assessment_id] = combined
 
         # Sort by combined score and return top-k
