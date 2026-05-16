@@ -123,12 +123,22 @@ def chat(request: ChatRequest):
         context = _extract_context(messages)
         state_machine.gathered_context.update_from_dict(context)
 
+        # If we still don't have enough context, ask for clarification
+        if not context.get("role") and not context.get("domains") and not context.get("test_type_preference"):
+            reply = "To find the right assessment, " + generate_clarification_question(context)
+            return ChatResponse(
+                reply=reply,
+                recommendations=[],
+                end_of_conversation=False
+            )
+
         # If we have enough context, provide recommendations
         if context.get("role") or context.get("domains") or context.get("test_type_preference"):
             # Perform search
             search_query = _build_search_query(context)
             if retriever:
-                results = retriever.search(search_query, k=10)
+                # Use weights favoring BM25 for better keyword matching on roles
+                results = retriever.search(search_query, k=10, weights=(0.4, 0.6))
             else:
                 # Fallback to catalog search if retriever not available
                 results = _fallback_search(catalog, context)
@@ -204,11 +214,22 @@ def _extract_context(messages: list) -> dict:
         "test_type_preference": [],
     }
 
-    full_text = " ".join([m.content for m in messages]).lower()
+    # Handle both Message objects and dicts
+    full_text = ""
+    for m in messages:
+        if hasattr(m, 'content'):
+            full_text += " " + m.content
+        elif isinstance(m, dict):
+            full_text += " " + m.get('content', '')
+        else:
+            full_text += " " + str(m)
+
+    full_text = full_text.lower()
 
     # Extract role
     roles = ["developer", "manager", "engineer", "analyst", "architect", "designer",
-             "consultant", "coordinator", "specialist", "officer", "director"]
+             "consultant", "coordinator", "specialist", "officer", "director",
+             "representative", "sales", "support", "executive", "operator"]
     for role in roles:
         if role in full_text:
             context["role"] = role.title()
