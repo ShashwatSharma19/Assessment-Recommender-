@@ -191,18 +191,27 @@ def chat(request: ChatRequest):
 
 
 def _has_sufficient_context(user_message: str) -> bool:
-    """Check if user message provides sufficient context."""
+    """Check if user message provides sufficient context on turn 1.
+
+    Requires: role/domain + seniority level to proceed without clarification.
+    """
     message_lower = user_message.lower()
 
-    # Keywords that indicate sufficient context
-    sufficient_keywords = [
-        "developer", "manager", "engineer", "analyst",
-        "java", "python", "javascript", "sql",
-        "cognitive", "personality", "behavioral",
-        "junior", "mid", "senior", "executive",
-    ]
+    # Seniority indicators (REQUIRED)
+    seniority_keywords = ["junior", "mid", "middle", "senior", "executive", "entry", "entry-level"]
+    has_seniority = any(kw in message_lower for kw in seniority_keywords)
 
-    return any(kw in message_lower for kw in sufficient_keywords)
+    # Role/domain indicators (REQUIRED)
+    role_keywords = [
+        "developer", "manager", "engineer", "analyst", "architect",
+        "java", "python", "javascript", "sql", "c#", "csharp",
+        "cognitive", "personality", "behavioral", "leadership",
+        "technical", "data scientist", "devops", "sales",
+    ]
+    has_role = any(kw in message_lower for kw in role_keywords)
+
+    # Must have BOTH seniority and role to skip clarification
+    return has_seniority and has_role
 
 
 def _extract_context(messages: list) -> dict:
